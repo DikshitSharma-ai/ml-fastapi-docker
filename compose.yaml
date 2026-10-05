@@ -1,0 +1,26 @@
+services:
+# ============================================
+  # FastAPI ML service
+  # ============================================
+
+  api:
+    image: ml-fastapi-final
+    container_name: ml-fastapi-compose
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: model.pkl
+
+
+  # ============================================
+  # Supporting service
+  # ============================================
+
+  supporting-service:
+    image: python:3.12-slim
+    container_name: ml-supporting-service
+    command:
+      - python
+      - -c
+      - print("Supporting service running")
+
